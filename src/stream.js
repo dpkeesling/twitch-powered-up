@@ -14,14 +14,14 @@ function start (config) {
     -tune zerolatency \
     -vcodec libx264 \
     -r ${config.twitch.stream.framerate} \
-    -vf ${config.twitch.stream.videoFilter} \
+    ${config.twitch.stream.videoFilter ? '-vf ' + config.twitch.stream.videoFilter : ''} \
     -g 30 \
     -pix_fmt yuv420p \
     -preset ${config.twitch.stream.qualityPreset} \
     -b:v ${config.twitch.stream.bitrate} \
     -force_key_frames 0:00:02 \
     -f flv \
-    "rtmp://${config.twitch.stream.ingestServer}.twitch.tv/app/${config.twitch.stream.streamKey}"`
+    "rtmp://${config.twitch.stream.ingestServer}.twitch.tv/app/${config.twitch.stream.key}"`
 
   const startStream = exec(cmdString, (error, stdout, stderr) => {
     if (error) {

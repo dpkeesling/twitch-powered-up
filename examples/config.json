@@ -1,19 +1,21 @@
 {
     "twitch": {
-        "auth": "{OAuthToken}",
-        "refresh": "{OAuthRefreshToken}",
-        "username": "twitchpoweredup",
-        "channel": "twitchpoweredup",
-        "messageLifetime": 5000,
+        "chat": {
+            "auth": "{OAuthToken}",
+            "refresh": "{OAuthRefreshToken}",
+            "username": "twitchpoweredup",
+            "channel": "twitchpoweredup",
+            "messageLifetime": 5000
+        },
         "stream" : {
-            "streamKey": "{StreamKey}",
+            "key": "{StreamKey}",
             "ingestServer": "live-ord02",
             "displayDevice": "/dev/video0",
             "framerate": "30",
             "qualityPreset": "ultrafast",
-            "bitrate": "1000k",
+            "bitrate": "3000k",
             "videoSize": "640x480",
-            "videoFilter": "crop=640:360:0:60"
+            "videoFilters": "crop=640:360:0:60"
         }
     },
     "devices": [
@@ -49,6 +51,25 @@
                     ],
                     "value": -50,
                     "multiplier": -1
+                },
+                {
+                    "method": "setPower",
+                    "verbs": [
+                        "faster",
+                        "quicker"
+                    ],
+                    "value": 50,
+                    "relative": true
+                },
+                {
+                    "method": "setPower",
+                    "verbs": [
+                        "slower",
+                        "decelerate"
+                    ],
+                    "value": 50,
+                    "multiplier": -1,
+                    "relative": true
                 }
             ]
         },
@@ -67,6 +88,15 @@
                         "brightness"
                     ],
                     "value": 80
+                },
+                {
+                    "method": "setBrightness",
+                    "verbs": [
+                        "flash",
+                        "blink"
+                    ],
+                    "value": 80,
+                    "lifetime": 1
                 },
                 {
                     "method": "setBrightness",
